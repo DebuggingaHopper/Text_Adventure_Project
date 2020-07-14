@@ -4,7 +4,7 @@ import sys
 import random
 import os
 
-
+#Here we create the User calls which containes the users age, name, and their morality.
 class User:
     def __init__(self, name, age, morality=0):
         self.name = name
@@ -47,7 +47,9 @@ class User:
     def decrease_morality(self):
         self.morality = self.morality-1
 
-
+class NPC:
+    def __init__(self, name):
+        self.name = name
 
 
 
@@ -498,12 +500,14 @@ def go_F():
 
 
 def help9():
-    text = "The commands you can type are 'turn around' , 'inspect' "
+    text = "The commands you can type are 'turn around' , 'inspect' , 'listen', 'go forward' "
     message(text)
     action = action_input()
     switcher = {
         "turn around": turnaround,
-        "inspect": inspecting_againagain
+        "inspect": inspecting_againagain,
+        "listen": listentos,
+        "go forward": go_F2
     }
     def action_response(argument):
         func = switcher.get(argument, help9)
@@ -516,7 +520,9 @@ def ignorethem():
     action = action_input()
     switcher = {
         "turn around": turnaround,
-        "inspect": inspecting_againagain
+        "inspect": inspecting_againagain,
+        "listen": listentos,
+        "go forward": go_F2
     }
     def action_response(argument):
         func = switcher.get(argument, help9)
@@ -528,25 +534,135 @@ def turnaround():
     action = action_input()
     switcher = {
         "turn around": turnaround,
-        "inspect": inspecting_againagain
+        "inspect": inspecting_againagain,
+        "listen": listentos,
+        "go forward": go_F2
     }
     def action_response(argument):
         func = switcher.get(argument, help9)
         return func()
     action_response(action)
 def inspecting_againagain():
-    text = "You began to inspect your suuroundings...you see a puddle of blood but you can't seem to see anything else around you. It seems that what ever was following you has left... "
+    text = "You began to inspect your suroundings...you see a puddle of blood but you can't seem to see anything else around you. It seems that what ever was following you has left... "
     message(text)
     action = action_input()
     switcher = {
         "turn around": turnaround,
-        "inspect": inspecting_againagain
+        "inspect": inspecting_againagain,
+        "listen": listentos,
+        "go forward": go_F2
+    }
+    def action_response(argument):
+        func = switcher.get(argument, help9)
+        return func()
+    action_response(action)
+def listentos():
+    text = "You began to listen to your surroundings, you could only hear the wind but for some reason you could hear some silent screams...it's a bit unsettling...  "
+    message(text)
+    action = action_input()
+    switcher = {
+        "turn around": turnaround,
+        "inspect": inspecting_againagain,
+        "listen": listentos,
+        "go forward": go_F2
     }
     def action_response(argument):
         func = switcher.get(argument, help9)
         return func()
     action_response(action)
 
+
+
+
+
+
+
+
+def help10():
+    text = "The commands you can type are 'look around' , 'inspect corpse' , 'inspect journal' , 'inspect watch' "
+    message(text)
+    action = action_input()
+    switcher = {
+        "look around": surroundings,
+        "inspect corpse": inspect_corpse,
+        "inspect journal": inspect_journal,
+        "inspect watch": inspect_watch
+    }
+    def action_response(argument):
+        func = switcher.get(argument, help10)
+        return func()
+    action_response(action)
+def surroundings():
+    text = "You looked around your surroundings...there doesn't seem to be anything around you for now... "
+    message(text)
+    action = action_input()
+    switcher = {
+        "look around": surroundings,
+        "inspect corpse": inspect_corpse,
+        "inspect journal": inspect_journal,
+        "inspect watch": inspect_watch
+    }
+    def action_response(argument):
+        func = switcher.get(argument, help10)
+        return func()
+    action_response(action)
+def inspect_corpse():
+    text = "You began to inspect the corpse..you noticed that the watch seems to have the date 9-10-17 enscribed onto it.....the corpse seems to be rotting...you can see some worms within the eye sockets"
+    user.decrease_morality()
+    message(text)
+    action = action_input()
+    switcher = {
+        "look around": surroundings,
+        "inspect corpse": inspect_corpse,
+        "inspect journal": inspect_journal,
+        "inspect watch": inspect_watch
+    }
+    def action_response(argument):
+        func = switcher.get(argument, help10)
+        return func()
+    action_response(action)
+def inspect_journal():
+    text = "You began to inspect the journal..there doesn't seem to be anything of importance except for a strange drawing of a tube and what seems to be a lion within the tube...."
+    message(text)
+    action = action_input()
+    switcher = {
+        "look around": surroundings,
+        "inspect corpse": inspect_corpse,
+        "inspect journal": inspect_journal,
+        "inspect watch": inspect_watch
+    }
+    def action_response(argument):
+        func = switcher.get(argument, help10)
+        return func()
+    action_response(action)
+def inspect_watch():
+    text = "You began to inspect the watch without getting too close to the corpse..you can't seem ti see anything perculiar however you noticed it saying something around 9-?1-????...the rest of it can't be read unless you gte a bit closer to the corpse however that would be very immoral..."
+    message(text)
+    action = action_input()
+    switcher = {
+        "look around": surroundings,
+        "inspect corpse": inspect_corpse,
+        "inspect journal": inspect_journal,
+        "inspect watch": inspect_watch
+    }
+    def action_response(argument):
+        func = switcher.get(argument, help10)
+        return func()
+    action_response(action)
+def go_F2():
+    text = "You continued walking forward, as you began walking past the empty streets, you come across a corpse wearing an antique watch, and holding what seems to be a journal.... it seems to have been decomposing for a while..."
+    message(text)
+    action = action_input()
+    switcher = {
+        "look around": surroundings,
+        "inspect corpse": inspect_corpse,
+        "inspect journal": inspect_journal,
+        "inspect watch": inspect_watch
+    }
+    def action_response(argument):
+        func = switcher.get(argument, help10)
+        return func()
+    action_response(action)
 
 
 
@@ -570,13 +686,14 @@ def inspecting_againagain():
 
 
 def help8():
-    text = "The commands you can type are 'talk' , 'look', 'stay' "
+    text = "The commands you can type are 'talk' , 'look', 'stay' , 'go forward' "
     message(text)
     action = action_input()
     switcher = {
         "talk": talking,
         "look": lookaround_more,
-        "stay": staystill
+        "stay": staystill,
+        "go forward": go_F3
     }
     def action_response(argument):
         func = switcher.get(argument, help8)
@@ -590,32 +707,36 @@ def helpthem():
     switcher = {
         "talk": talking,
         "look": lookaround_more,
-        "stay": staystill
+        "stay": staystill,
+        "go forward": go_F3
     }
     def action_response(argument):
         func = switcher.get(argument, help8)
         return func()
     action_response(action)
 def talking():
+    Issac.name = "Young Man"
     text = " You: are you okay?"
     message(text)
-    text = " Young man : ...I thought I was a goner...those things...almost killed me..."
+    text = " {} : ...I thought I was a goner...those things...almost killed me...".format(Issac.name)
     message(text)
     text = " You: those things?, what are you talking about?"
     message(text)
-    text = " Young man : Have you not seen those things!? They are all over this place...I'm surprised they haven't attacked you yet..."
+    text = " {} : Have you not seen those things!? They are all over this place...I'm surprised they haven't attacked you yet...".format(Issac.name)
     message(text)
     text = " You: We should get going...."
     message(text)
-    text = " Young man : your telling me..the names Issac"
+    text = " {} : your telling me..the names Issac".format(Issac.name)
     message(text)
     text = " You: the names {}...lets get going".format(user.name)
     message(text)
+    Issac.name = "Issac"
     action = action_input()
     switcher = {
         "talk": talking,
         "look": lookaround_more,
-        "stay": staystill
+        "stay": staystill,
+        "go forward": go_F3
     }
     def action_response(argument):
         func = switcher.get(argument, help8)
@@ -628,22 +749,70 @@ def lookaround_more():
     switcher = {
         "talk": talking,
         "look": lookaround_more,
-        "stay": staystill
+        "stay": staystill,
+        "go forward": go_F3
     }
     def action_response(argument):
         func = switcher.get(argument, help8)
         return func()
     action_response(action)
 def staystill():
-    text = "You stayed , and continued conversing with the young man..."
+    text = "You stayed , and continued conversing with {}...".format(Issac.name)
     message(text)
-    text = "Young man:...wait what's that behind you....AGGGGGGHHHHHH!!!"
+    text = "{}:...wait what's that behind you....AGGGGGGHHHHHH!!!".format(Issac.name)
     message(text)
     text = "Before you could realize what was occurring.....You could feel fangs on your neck...you couldn't believe that just like that your life is over"
     message(text)
     text = "YOU DIED"
     message(text)
     restart()
+
+
+
+
+
+
+
+
+
+
+def help11():
+    text = "The commands you can type are 'look around' "
+    message(text)
+    action = action_input()
+    switcher = {
+        "look around": surroundings2
+    }
+    def action_response(argument):
+        func = switcher.get(argument, help11)
+        return func()
+    action_response(action)
+def go_F3():
+    text = "You continued walking forward, as you began walking past the empty streets, you come across a corpse wearing an antique watch, and holding what seems to be a journal.... it seems to have been decomposing for a while..."
+    message(text)
+    action = action_input()
+    switcher = {
+        "look around": surroundings2
+    }
+    def action_response(argument):
+        func = switcher.get(argument, help11)
+        return func()
+    action_response(action)
+def surroundings2():
+    text = "You looked around your surroundings...there doesn't seem to be anything around you for now....{} seems to be cautious, and is constantly looking around his surroundings.. ".format(Issac.name)
+    message(text)
+    action = action_input()
+    switcher = {
+        "look around": surroundings2
+    }
+    def action_response(argument):
+        func = switcher.get(argument, help11)
+        return func()
+    action_response(action)
+
+
+
+
 
 
 
@@ -782,6 +951,29 @@ age = int(input("What is your age?: "))
 while(age<15) :
         age = int(input("What is your age?: "))
 user = User(Name, age)
+Issac = NPC("Issac")
 message(user.name_m())
 message(user.age_m())
 b()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
