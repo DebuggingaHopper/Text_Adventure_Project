@@ -777,11 +777,15 @@ def staystill():
 
 
 def help11():
-    text = "The commands you can type are 'look around' "
+    text = "The commands you can type are 'look around' , 'inspect corpse' , 'inspect journal' , 'talk' "
     message(text)
     action = action_input()
     switcher = {
-        "look around": surroundings2
+        "look around": surroundings2,
+        "inspect corpse": inspectcorpse2,
+        "inspect watch": inspect_watch2,
+        "inspect journal": inspect_journal,
+        "talk": talkingagain_one
     }
     def action_response(argument):
         func = switcher.get(argument, help11)
@@ -792,7 +796,11 @@ def go_F3():
     message(text)
     action = action_input()
     switcher = {
-        "look around": surroundings2
+        "look around": surroundings2,
+        "inspect corpse": inspectcorpse2,
+        "inspect watch": inspect_watch2,
+        "inspect journal": inspect_journal,
+        "talk": talkingagain_one
     }
     def action_response(argument):
         func = switcher.get(argument, help11)
@@ -803,12 +811,110 @@ def surroundings2():
     message(text)
     action = action_input()
     switcher = {
-        "look around": surroundings2
+        "look around": surroundings2,
+        "inspect corpse": inspectcorpse2,
+        "inspect watch": inspect_watch2,
+        "inspect journal": inspect_journal,
+        "talk": talkingagain_one
     }
     def action_response(argument):
         func = switcher.get(argument, help11)
         return func()
     action_response(action)
+def inspectcorpse2():
+    user.decrease_morality()
+    text = "You began to inspect the corpse..you noticed that the watch seems to have the date 9-10-17 enscribed onto it.....the corpse seems to be rotting...you can see some worms within the eye sockets"
+    message(text)
+    text ="{} : What the hell are you doing!?".format(Issac.name)
+    message(text)
+    text = "You : What do you think..I am investigating.."
+    message(text)
+    text = "{} : I know that but still..it's a corpse shouldn't we leave it alone?".format(Issac.name)
+    message(text)
+    text = "You : Under normal circumstances I would but in this case I think it's an exception"
+    message(text)
+    text = "{} : I mean but still...it's a corpse....".format(Issac.name)
+    message(text)
+    action = action_input()
+    switcher = {
+        "look around": surroundings2,
+        "inspect corpse": inspectcorpse2,
+        "inspect watch": inspect_watch2,
+        "inspect journal": inspect_journal,
+        "talk": talkingagain_one
+    }
+    def action_response(argument):
+        func = switcher.get(argument, help11)
+        return func()
+    action_response(action)
+def inspect_watch2():
+    text = "You began to inspect the watch without getting too close to the corpse..you can't seem ti see anything perculiar however you noticed it saying something around 9-?1-????...the rest of it can't be read unless you gte a bit closer to the corpse however that would be very immoral..."
+    message(text)
+    text = "{}: Did you find anything of importance?".format(Issac.name)
+    message(text)
+    text = "You: not really..I don't know if I should inspect the corpse.. "
+    message(text)
+    text = "{}: I mean I wouldn't recommend that...we don't know if there is still one of those damn things around the area....".format(Issac.name)
+    message(text)
+    action = action_input()
+    switcher = {
+        "look around": surroundings2,
+        "inspect corpse": inspectcorpse2,
+        "inspect watch": inspect_watch2,
+        "inspect journal": inspect_journal,
+        "talk": talkingagain_one
+    }
+    def action_response(argument):
+        func = switcher.get(argument, help11)
+        return func()
+    action_response(action)
+def inspect_journal2():
+    text = "You began to inspect the journal..there doesn't seem to be anything of importance except for a strange drawing of a tube and what seems to be a lion within the tube...."
+    message(text)
+    text = "{}: wait a second...this journal looks like the journal one of my co-workers had..but they left work only a month ago...what the hell is going on...".format(Issac.name)
+    message(text)
+    action = action_input()
+    switcher = {
+        "look around": surroundings2,
+        "inspect corpse": inspectcorpse2,
+        "inspect watch": inspect_watch2,
+        "inspect journal": inspect_journal,
+        "talk": talkingagain_one
+    }
+    def action_response(argument):
+        func = switcher.get(argument, help11)
+        return func()
+    action_response(action)
+def talkingagain_one():
+    text = "You: So what do you think killed them..."
+    message(text)
+    if(user.morality > 0):
+        text = "{}: It had to be one of those things that's for sure".format(Issac.name)
+        message(text)
+    else:
+        text = "{}: I believe that's the least of our concerns..how can I trust you?".format(Issac.name)
+        message(text)
+        text = "You : what do you mean?".format(Issac.name)
+        message(text)
+        text = "{}: I mean...how can I trust you..you may have saved my life...but how do I know if you won't throw me to the side to save your own skin? ".format(Issac.name)
+        message(text)
+        text = "You : I believe that's something you need to decide...it's either teaming up with me or geting killed by whatever the hell those things you keep mentioning are...".format(Issac.name)
+        message(text)
+    action = action_input()
+    switcher = {
+        "look around": surroundings2,
+        "inspect corpse": inspectcorpse2,
+        "inspect watch": inspect_watch2,
+        "inspect journal": inspect_journal,
+        "talk": talkingagain_one
+    }
+    def action_response(argument):
+        func = switcher.get(argument, help11)
+        return func()
+    action_response(action)
+
+
+
 
 
 
@@ -955,25 +1061,3 @@ Issac = NPC("Issac")
 message(user.name_m())
 message(user.age_m())
 b()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
