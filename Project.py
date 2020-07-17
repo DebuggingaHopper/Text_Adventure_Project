@@ -579,14 +579,15 @@ def listentos():
 
 
 def help10():
-    text = "The commands you can type are 'look around' , 'inspect corpse' , 'inspect journal' , 'inspect watch' "
+    text = "The commands you can type are 'look around' , 'inspect corpse' , 'inspect journal' , 'inspect watch' , 'go forward' "
     message(text)
     action = action_input()
     switcher = {
         "look around": surroundings,
         "inspect corpse": inspect_corpse,
         "inspect journal": inspect_journal,
-        "inspect watch": inspect_watch
+        "inspect watch": inspect_watch,
+        "go forward": go_FF2
     }
     def action_response(argument):
         func = switcher.get(argument, help10)
@@ -600,7 +601,8 @@ def surroundings():
         "look around": surroundings,
         "inspect corpse": inspect_corpse,
         "inspect journal": inspect_journal,
-        "inspect watch": inspect_watch
+        "inspect watch": inspect_watch,
+        "go forward": go_FF2
     }
     def action_response(argument):
         func = switcher.get(argument, help10)
@@ -615,7 +617,8 @@ def inspect_corpse():
         "look around": surroundings,
         "inspect corpse": inspect_corpse,
         "inspect journal": inspect_journal,
-        "inspect watch": inspect_watch
+        "inspect watch": inspect_watch,
+        "go forward": go_FF2
     }
     def action_response(argument):
         func = switcher.get(argument, help10)
@@ -629,7 +632,8 @@ def inspect_journal():
         "look around": surroundings,
         "inspect corpse": inspect_corpse,
         "inspect journal": inspect_journal,
-        "inspect watch": inspect_watch
+        "inspect watch": inspect_watch,
+        "go forward": go_FF2
     }
     def action_response(argument):
         func = switcher.get(argument, help10)
@@ -643,7 +647,8 @@ def inspect_watch():
         "look around": surroundings,
         "inspect corpse": inspect_corpse,
         "inspect journal": inspect_journal,
-        "inspect watch": inspect_watch
+        "inspect watch": inspect_watch,
+        "go forward": go_FF2
     }
     def action_response(argument):
         func = switcher.get(argument, help10)
@@ -657,12 +662,61 @@ def go_F2():
         "look around": surroundings,
         "inspect corpse": inspect_corpse,
         "inspect journal": inspect_journal,
-        "inspect watch": inspect_watch
+        "inspect watch": inspect_watch,
+        "go forward": go_FF2
     }
     def action_response(argument):
         func = switcher.get(argument, help10)
         return func()
     action_response(action)
+
+
+
+
+
+
+
+
+
+
+
+
+def help13():
+    text = "The commands you can type are 'talk' "
+    message(text)
+    action = action_input()
+    switcher = {
+        "talk": talking2
+    }
+    def action_response(argument):
+        func = switcher.get(argument, help13)
+        return func()
+    action_response(action)
+def go_FF2():
+    text = "You Continued moving forward hoping to see if you could find a safe space away from the 'things' that killed {}".format(Issac.name)
+    message(text)
+    action = action_input()
+    switcher = {
+        "talk": talking3
+    }
+    def action_response(argument):
+        func = switcher.get(argument, help13)
+        return func()
+    action_response(action)
+def talking3():
+    text = "Who would you even be talking to....no one is around you...."
+    message(text)
+    action = action_input()
+    switcher = {
+        "talk": talking3
+    }
+
+    def action_response(argument):
+        func = switcher.get(argument, help13)
+        return func()
+
+    action_response(action)
+
 
 
 
@@ -777,7 +831,7 @@ def staystill():
 
 
 def help11():
-    text = "The commands you can type are 'look around' , 'inspect corpse' , 'inspect journal' , 'talk' "
+    text = "The commands you can type are 'look around' , 'inspect corpse' , 'inspect journal' , 'talk', 'go forward' "
     message(text)
     action = action_input()
     switcher = {
@@ -785,7 +839,8 @@ def help11():
         "inspect corpse": inspectcorpse2,
         "inspect watch": inspect_watch2,
         "inspect journal": inspect_journal,
-        "talk": talkingagain_one
+        "talk": talkingagain_one,
+        "go forward": go_FF
     }
     def action_response(argument):
         func = switcher.get(argument, help11)
@@ -800,7 +855,8 @@ def go_F3():
         "inspect corpse": inspectcorpse2,
         "inspect watch": inspect_watch2,
         "inspect journal": inspect_journal,
-        "talk": talkingagain_one
+        "talk": talkingagain_one,
+        "go forward": go_FF
     }
     def action_response(argument):
         func = switcher.get(argument, help11)
@@ -815,7 +871,8 @@ def surroundings2():
         "inspect corpse": inspectcorpse2,
         "inspect watch": inspect_watch2,
         "inspect journal": inspect_journal,
-        "talk": talkingagain_one
+        "talk": talkingagain_one,
+        "go forward": go_FF
     }
     def action_response(argument):
         func = switcher.get(argument, help11)
@@ -841,7 +898,8 @@ def inspectcorpse2():
         "inspect corpse": inspectcorpse2,
         "inspect watch": inspect_watch2,
         "inspect journal": inspect_journal,
-        "talk": talkingagain_one
+        "talk": talkingagain_one,
+        "go forward": go_FF
     }
     def action_response(argument):
         func = switcher.get(argument, help11)
@@ -862,7 +920,8 @@ def inspect_watch2():
         "inspect corpse": inspectcorpse2,
         "inspect watch": inspect_watch2,
         "inspect journal": inspect_journal,
-        "talk": talkingagain_one
+        "talk": talkingagain_one,
+        "go forward": go_FF
     }
     def action_response(argument):
         func = switcher.get(argument, help11)
@@ -879,7 +938,8 @@ def inspect_journal2():
         "inspect corpse": inspectcorpse2,
         "inspect watch": inspect_watch2,
         "inspect journal": inspect_journal,
-        "talk": talkingagain_one
+        "talk": talkingagain_one,
+        "go forward": go_FF
     }
     def action_response(argument):
         func = switcher.get(argument, help11)
@@ -906,13 +966,65 @@ def talkingagain_one():
         "inspect corpse": inspectcorpse2,
         "inspect watch": inspect_watch2,
         "inspect journal": inspect_journal,
-        "talk": talkingagain_one
+        "talk": talkingagain_one,
+        "go forward": go_FF
     }
     def action_response(argument):
         func = switcher.get(argument, help11)
         return func()
     action_response(action)
 
+
+
+
+
+
+
+
+
+def help12():
+    text = "The commands you can type are 'talk' "
+    message(text)
+    action = action_input()
+    switcher = {
+        "talk": talking2
+    }
+    def action_response(argument):
+        func = switcher.get(argument, help12)
+        return func()
+    action_response(action)
+def go_FF():
+    text = "You Continued moving forward with {} , hoping to see if you could find a safe space away from the 'things' {} keeps referring to.... ".format(Issac.name , Issac.name)
+    message(text)
+    action = action_input()
+    switcher = {
+        "talk": talking2
+    }
+    def action_response(argument):
+        func = switcher.get(argument, help12)
+        return func()
+    action_response(action)
+def talking2():
+    text = "You: do you have any idea where we are..."
+    message(text)
+    if (user.morality > 0):
+        text = "{}: Honestly no...all I remember are these streets since I was running as fast as I could from those damn things".format(Issac.name)
+        message(text)
+        text = "You: how did those things even looked like..."
+        message(text)
+        text = "{}: They looked like a lion but had legs like an arachnid..one things for sure...they're freaks of nature....tnat's for sure ".format(Issac.name)
+        message(text)
+    else:
+        text = "{}:.......no clue".format(Issac.name)
+        message(text)
+    action = action_input()
+    switcher = {
+        "talk": talking2
+    }
+    def action_response(argument):
+        func = switcher.get(argument, help12)
+        return func()
+    action_response(action)
 
 
 
